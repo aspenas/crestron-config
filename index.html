@@ -1,0 +1,904 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Lighting Control Specification">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Crestron Configuration</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#highline-switch-integration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Crestron Configuration" class="md-header__button md-logo" aria-label="Crestron Configuration" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Crestron Configuration
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Highline | Switch Integration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Crestron Configuration" class="md-nav__button md-logo" aria-label="Crestron Configuration" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Crestron Configuration
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Highline | Switch Integration
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="highline-switch-integration">Highline | Switch Integration</h1>
+<table>
+<thead>
+<tr>
+<th><strong>Floor</strong></th>
+<th><strong>Room / Zone</strong></th>
+<th><strong>Switch (Existing Label)</strong></th>
+<th><strong>Proposed Device &amp; Style</strong></th>
+<th><strong>Engraving</strong> (Line by Line)</th>
+<th><strong>Notes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Front Entry</td>
+<td>Outside Two French Doors (“Sconces”)</td>
+<td>HZ2-SWEX,<strong>Style 2</strong> (1–3 lines+OFF)</td>
+<td><strong>Line 1:</strong> ENTRY SCONCE <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>1 load. If dimming needed, HZ2-DIMUEX, same Style 2.</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Front Entry</td>
+<td>4-panel: “Foyer Pendant, Porch Sconce, Front Porch, Porch Pendant”</td>
+<td>HZ2-SWEX,<strong>Style 1</strong> (5 lines)</td>
+<td><strong>1:</strong> FOYER PENDANT <code>&lt;br&gt;</code><strong>2:</strong> PORCH SCONCE <code>&lt;br&gt;</code><strong>3:</strong> FRONT PORCH <code>&lt;br&gt;</code><strong>4:</strong> PORCH PENDANT <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>4 loads, no leftover lines.</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Front Entry</td>
+<td>2-panel: “Stairs Up / Foyer Pendant” (base of stairs)</td>
+<td>HZ2-DIMUEX,<strong>Style 2</strong></td>
+<td><strong>Line 1:</strong> STAIRS UP <code>&lt;br&gt;</code><strong>Line 2:</strong> FOYER PENDANT <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>2 loads. If you want a 3rd line “FULL,” still Style 2.</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Living Hall</td>
+<td>2-panel: “Living Rm Hall / Foyer Pendant”</td>
+<td>HZ2-DIMUEX,<strong>Style 2</strong></td>
+<td><strong>Line 1:</strong> LIVING HALL <code>&lt;br&gt;</code><strong>Line 2:</strong> FOYER PENDANT <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>2 loads. Could add “FULL” as a 3rd line.</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Living Room</td>
+<td>“Cans / Mantle Lamps / Fireplace Lamps / Chandelier”</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong> (5 lines)</td>
+<td><strong>1:</strong> DOWNLIGHTS <code>&lt;br&gt;</code><strong>2:</strong> MANTLE LAMPS <code>&lt;br&gt;</code><strong>3:</strong> FIREPLACE LAMPS <code>&lt;br&gt;</code><strong>4:</strong> CHANDELIER <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>4 loads. “Fireplace Lamps” newly added.</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Living Room</td>
+<td>Fireplace (legacy switch)</td>
+<td>HZ2-SWEX,<strong>Style 6</strong> (large rocker)</td>
+<td><strong>TOP:</strong> FIREPLACE <code>&lt;br&gt;</code><strong>BOTTOM:</strong> OFF</td>
+<td>Single load. If you want dim, do HZ2-DIMUEX Style 2.</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Wine/Bar Hall</td>
+<td>4 loads: “Living Hall, Wine Area, Hearth Pendant, Living Cans”</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong> (5 lines)</td>
+<td><strong>1:</strong> LIVING HALL <code>&lt;br&gt;</code><strong>2:</strong> WINE AREA <code>&lt;br&gt;</code><strong>3:</strong> HEARTH PENDANT <code>&lt;br&gt;</code><strong>4:</strong> LIVING CANS <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>4 loads, no blank lines.</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Bar</td>
+<td>“Bar Cans, Bar Pendants, Bar LEDs, Bar Lamp” (4 loads)</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong></td>
+<td><strong>1:</strong> BAR CANS <code>&lt;br&gt;</code><strong>2:</strong> BAR PENDANTS <code>&lt;br&gt;</code><strong>3:</strong> BAR LEDS <code>&lt;br&gt;</code><strong>4:</strong> BAR LAMP <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>Perfect for 4 loads.</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Wine Cellar</td>
+<td>“Wine Sconces, Wine Pendant, Wine Cans, Art Light” (4 loads)</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong></td>
+<td><strong>1:</strong> WINE SCONCES <code>&lt;br&gt;</code><strong>2:</strong> WINE PENDANT <code>&lt;br&gt;</code><strong>3:</strong> WINE CANS <code>&lt;br&gt;</code><strong>4:</strong> ART LIGHT <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>4 loads total.</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>West Powder</td>
+<td>3 loads: “Fan, Sconces, Cans,” + “FULL” scene</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong></td>
+<td><strong>1:</strong> FULL <code>&lt;br&gt;</code><strong>2:</strong> FAN <code>&lt;br&gt;</code><strong>3:</strong> SCONCES <code>&lt;br&gt;</code><strong>4:</strong> CANS <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>3 loads + scene line. Style 1 = no leftover.</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Kitchen / Pantry</td>
+<td>“Pantry Hall / Kitchen Cans” + “Pendants, FULL” lines?</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong></td>
+<td><strong>1:</strong> PANTRY HALL <code>&lt;br&gt;</code><strong>2:</strong> KITCHEN CANS <code>&lt;br&gt;</code><strong>3:</strong> PENDANTS <code>&lt;br&gt;</code><strong>4:</strong> FULL <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>3 loads + a scene line.</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Karen’s Office</td>
+<td>2 loads + shade + “DIM” =&gt; 4 lines</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong></td>
+<td><strong>1:</strong> CANS <code>&lt;br&gt;</code><strong>2:</strong> CABINETS <code>&lt;br&gt;</code><strong>3:</strong> SHADE <code>&lt;br&gt;</code><strong>4:</strong> DIM <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>3 loads + 1 scene line.</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Dining</td>
+<td>3 loads + shade =&gt; “Table / Cans / Shades / DINNER”</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong></td>
+<td><strong>1:</strong> TABLE <code>&lt;br&gt;</code><strong>2:</strong> DINING CANS <code>&lt;br&gt;</code><strong>3:</strong> SHADES <code>&lt;br&gt;</code><strong>4:</strong> DINNER <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>3 loads + 1 scene.</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Primary Bed Hall</td>
+<td>4 loads: “Living Hall, Foyer Pend, Master Hall, Stairs Down”</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong></td>
+<td><strong>1:</strong> LIVING HALL <code>&lt;br&gt;</code><strong>2:</strong> FOYER PENDANT <code>&lt;br&gt;</code><strong>3:</strong> MASTER HALL <code>&lt;br&gt;</code><strong>4:</strong> STAIRS DOWN <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>4 loads, no leftover lines.</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Primary Bed Entrance</td>
+<td>3 loads: “Entry Pend / Master Hall / Lamp”</td>
+<td>HZ2-DIMUEX,<strong>Style 2</strong></td>
+<td><strong>Line 1:</strong> ENTRY PENDANTS <code>&lt;br&gt;</code><strong>Line 2:</strong> MASTER HALL <code>&lt;br&gt;</code><strong>Line 3:</strong> LAMP <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>3 loads. Perfect for style 2.</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Primary Bedroom</td>
+<td>4 loads: “Cans, Shades, Side Lamps, Fan”</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong> (5 lines)</td>
+<td><strong>1:</strong> CANS <code>&lt;br&gt;</code><strong>2:</strong> SHADES <code>&lt;br&gt;</code><strong>3:</strong> SIDE LAMPS <code>&lt;br&gt;</code><strong>4:</strong> FAN <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>4 loads, no leftover.</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Bedside (L/R)</td>
+<td>“Ceiling, Lamp, Path, Sheers, Blackout” =&gt; 5 lines</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong> (5 lines)</td>
+<td><strong>1:</strong> LAMP <code>&lt;br&gt;</code><strong>2:</strong> PATH <code>&lt;br&gt;</code><strong>3:</strong> SHEERS <code>&lt;br&gt;</code><strong>4:</strong> BLACKOUT <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>Exactly 5 lines used.</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Primary Bath</td>
+<td>Entrance: “Pendant / Cans / Sinks / FULL”</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong></td>
+<td><strong>1:</strong> PENDANT <code>&lt;br&gt;</code><strong>2:</strong> CANS <code>&lt;br&gt;</code><strong>3:</strong> SINKS <code>&lt;br&gt;</code><strong>4:</strong> FULL <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>3 loads + “FULL.”</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Primary Bath</td>
+<td>1-panel “Sink” near His vanity (1 load)</td>
+<td>HZ2-DIMUEX or SWEX,<strong>Style 2</strong></td>
+<td><strong>Line 1:</strong> SINK <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>Single load. If you want “DIM,” add line 2.</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Primary Bath</td>
+<td>Toilet 2 loads: “Fan / Cans”</td>
+<td>HZ2-DIMUEX or SWEX,<strong>Style 2</strong></td>
+<td><strong>Line 1:</strong> FAN <code>&lt;br&gt;</code><strong>Line 2:</strong> CANS <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>2 loads = style 2.</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Primary Bath</td>
+<td>4 loads: “Karen’s Closet / K Closet Fan / Bath Fan / Patrick’s Closet”</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong></td>
+<td><strong>1:</strong> K CLOSET <code>&lt;br&gt;</code><strong>2:</strong> K CLOSET FAN <code>&lt;br&gt;</code><strong>3:</strong> BATH FAN <code>&lt;br&gt;</code><strong>4:</strong> P CLOSET <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>4 lines, no leftover.</td>
+</tr>
+<tr>
+<td><strong>MAIN</strong></td>
+<td>Primary Bath</td>
+<td>3 loads + “FULL”: “Tub Overhead / Tub Side / Shower”</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong></td>
+<td><strong>1:</strong> TUB OVERHEAD <code>&lt;br&gt;</code><strong>2:</strong> TUB SIDE <code>&lt;br&gt;</code><strong>3:</strong> SHOWER <code>&lt;br&gt;</code><strong>4:</strong> FULL <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>3 loads + 1 scene line.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>Patrick’s Office</td>
+<td>“Office Entry” (2 loads + scene)</td>
+<td>HZ2-DIMUEX,<strong>Style 2</strong> (3 lines + OFF)</td>
+<td><strong>Line 1:</strong> OFFICE ENTRY <code>&lt;br&gt;</code><strong>Line 2:</strong> FAN <code>&lt;br&gt;</code><strong>Line 3:</strong> FULL <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>Up to 3 lines. No leftover.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>Patrick’s Office</td>
+<td>Thermostat (Nest→Crestron)</td>
+<td>N/A (thermostat)</td>
+<td>—</td>
+<td>Not a Horizon device.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>Patrick’s Office</td>
+<td>Bath: "Fan / Sconces / Downlights" + “FULL”</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong> (5 lines)</td>
+<td><strong>1:</strong> FULL <code>&lt;br&gt;</code><strong>2:</strong> FAN <code>&lt;br&gt;</code><strong>3:</strong> SCONCES <code>&lt;br&gt;</code><strong>4:</strong> DOWNLIGHTS <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>3 loads + 1 scene line.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>Patrick’s Office</td>
+<td>Closet “Closet Light” (1 load)</td>
+<td>HZ2-DIMUEX,<strong>Style 6</strong></td>
+<td><strong>TOP:</strong> CLOSET LIGHT <code>&lt;br&gt;</code><strong>BOTTOM:</strong> OFF</td>
+<td>Single load. If no dim, SWEX style 6.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>Patrick’s Office</td>
+<td>4 loads: "Overhead Cans, Entry Cans, Sconces, Downlights"</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong></td>
+<td><strong>1:</strong> OVERHEAD CANS <code>&lt;br&gt;</code><strong>2:</strong> ENTRY CANS <code>&lt;br&gt;</code><strong>3:</strong> SCONCES <code>&lt;br&gt;</code><strong>4:</strong> DOWNLIGHTS <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>4 loads, no leftover lines.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>Patrick’s Office</td>
+<td>“Under Cabinet” switch (1 load)</td>
+<td>HZ2-DIMUEX,<strong>Style 2</strong></td>
+<td><strong>Line 1:</strong> UNDER CABINET <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>Single load. If you want a line for “DIM,” add line 2.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>Patrick’s Office</td>
+<td>Patio “Outside Patio” (light + shade)</td>
+<td>HZ2-KPEX or HZ2-DIMUEX,<strong>Style 2</strong></td>
+<td><strong>Line 1:</strong> PATIO LIGHT <code>&lt;br&gt;</code><strong>Line 2:</strong> SHADES <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>2 loads, no leftover.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>Patrick’s Office</td>
+<td>Top of Stair labeled “Sconces” (1 load)</td>
+<td>HZ2-SWEX,<strong>Style 6</strong></td>
+<td><strong>TOP:</strong> STAIR SCONCES <code>&lt;br&gt;</code><strong>BOTTOM:</strong> OFF</td>
+<td>Single load on/off. If you want a scene line, do style 2.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>Upstairs Laundry</td>
+<td>2 loads: “Fan / Light,” possibly 3rd line “FULL”</td>
+<td>HZ2-DIMUEX,<strong>Style 2</strong></td>
+<td><strong>Line 1:</strong> LIGHT <code>&lt;br&gt;</code><strong>Line 2:</strong> FAN <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>2 loads. If you want “FULL,” add a 3rd line.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>East Stair Landing</td>
+<td>3 loads: “East Hall / Stairs / Main Hall,” plus “FULL” line?</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong></td>
+<td><strong>1:</strong> EAST HALL <code>&lt;br&gt;</code><strong>2:</strong> STAIRS <code>&lt;br&gt;</code><strong>3:</strong> MAIN HALL <code>&lt;br&gt;</code><strong>4:</strong> FULL <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>3 loads + 1 scene.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>Trevor’s Hall Switch</td>
+<td>“Pendants / Main Hall” =&gt; 2 loads</td>
+<td>HZ2-DIMUEX,<strong>Style 2</strong></td>
+<td><strong>Line 1:</strong> PENDANTS <code>&lt;br&gt;</code><strong>Line 2:</strong> MAIN HALL <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>If you want a 3rd line “FULL,” do style 2 with 3 lines + OFF.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>Kendall’s Hall Switch</td>
+<td>“Pendant / Main Hall” =&gt; 2 loads</td>
+<td>HZ2-DIMUEX,<strong>Style 2</strong></td>
+<td><strong>Line 1:</strong> HALL PENDANT <code>&lt;br&gt;</code><strong>Line 2:</strong> MAIN HALL <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>Same approach as Trevor’s.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>Kendall’s Rm Ent</td>
+<td>“Fan, Cabinet, Cans, Bed Accent?” =&gt; 4 loads</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong> (5 lines)</td>
+<td><strong>1:</strong> FAN <code>&lt;br&gt;</code><strong>2:</strong> CABINET <code>&lt;br&gt;</code><strong>3:</strong> CANS <code>&lt;br&gt;</code><strong>4:</strong> BED ACCENT <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>4 loads, no leftover.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>Kendall’s Bedside</td>
+<td>Blank switch near bed (lamps + path + shades)</td>
+<td>HZ2-KPEX or HZ2-DIMUEX,<strong>Style 1</strong></td>
+<td><strong>1:</strong> LAMP <code>&lt;br&gt;</code><strong>2:</strong> PATH <code>&lt;br&gt;</code><strong>3:</strong> BLACKOUT <code>&lt;br&gt;</code><strong>4:</strong> SHEERS <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>4 lines + OFF.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>Kendall’s Closet</td>
+<td>Legacy on/off (1 load)</td>
+<td>HZ2-DIMUEX,<strong>Style 6</strong></td>
+<td><strong>TOP:</strong> CLOSET LIGHT <code>&lt;br&gt;</code><strong>BOTTOM:</strong> OFF</td>
+<td>Single load.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>Kendall’s Bath</td>
+<td>Entrance + toilet =&gt; 3–4 loads + “FULL?”</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong></td>
+<td><strong>1:</strong> PENDANT(or SCONCE)<code>&lt;br&gt;</code><strong>2:</strong> CANS <code>&lt;br&gt;</code><strong>3:</strong> SINK <code>&lt;br&gt;</code><strong>4:</strong> FULL <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>Then toilet is 2 loads =&gt; style 2 if needed.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>Trevor’s Entrance</td>
+<td>“Fan / Side Lamps / Cans / LED Strip?” =&gt; 4 loads</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong> (5 lines)</td>
+<td><strong>1:</strong> FAN <code>&lt;br&gt;</code><strong>2:</strong> SIDE LAMPS <code>&lt;br&gt;</code><strong>3:</strong> CANS <code>&lt;br&gt;</code><strong>4:</strong> LED STRIP <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>4 loads, no leftover lines.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>Trevor’s Bedside</td>
+<td>“Side Lamps” =&gt; 4 lines if path + shades</td>
+<td>HZ2-KPEX or HZ2-DIMUEX,<strong>Style 1</strong></td>
+<td><strong>1:</strong> LAMP <code>&lt;br&gt;</code><strong>2:</strong> PATH <code>&lt;br&gt;</code><strong>3:</strong> BLACKOUT <code>&lt;br&gt;</code><strong>4:</strong> SHEERS <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>4 lines + OFF.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>Trevor’s Closet</td>
+<td>Legacy on/off (1 load)</td>
+<td>HZ2-DIMUEX,<strong>Style 6</strong></td>
+<td><strong>TOP:</strong> CLOSET LIGHT <code>&lt;br&gt;</code><strong>BOTTOM:</strong> OFF</td>
+<td>Single load.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>Trevor’s Bath</td>
+<td>“Fan / Shower / Sconces” + “FULL” =&gt; 4 lines</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong> (5 lines)</td>
+<td><strong>1:</strong> FULL <code>&lt;br&gt;</code><strong>2:</strong> FAN <code>&lt;br&gt;</code><strong>3:</strong> SCONCES <code>&lt;br&gt;</code><strong>4:</strong> SHOWER <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>3 loads + 1 scene line.</td>
+</tr>
+<tr>
+<td><strong>UPPER</strong></td>
+<td>West Hall (end)</td>
+<td>2-switch: “Stairs + Main Hall” =&gt; 2 loads</td>
+<td>HZ2-DIMUEX,<strong>Style 2</strong></td>
+<td><strong>Line 1:</strong> STAIRS <code>&lt;br&gt;</code><strong>Line 2:</strong> MAIN HALL <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>If you want “FULL,” do 3 lines in style 2 or style 1 if 4–5 lines.</td>
+</tr>
+<tr>
+<td><strong>LOWER</strong></td>
+<td>Base of Stairs</td>
+<td>“Rec Rm Hall / West Hall / Stairs” =&gt; 3 loads + scene</td>
+<td>HZ2-SWEX or DIMUEX,<strong>Style 1</strong> (5 lines)</td>
+<td><strong>1:</strong> REC HALL <code>&lt;br&gt;</code><strong>2:</strong> WEST HALL <code>&lt;br&gt;</code><strong>3:</strong> STAIRS <code>&lt;br&gt;</code><strong>4:</strong> FULL <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>3 loads + scene line.</td>
+</tr>
+<tr>
+<td><strong>LOWER</strong></td>
+<td>Hall by Guest Room</td>
+<td>2 loads: “West Hall / Rec Rm Cans”</td>
+<td>HZ2-SWEX or DIMUEX,<strong>Style 2</strong></td>
+<td><strong>Line 1:</strong> WEST HALL <code>&lt;br&gt;</code><strong>Line 2:</strong> REC CANS <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>2 loads. If you want a 3rd line “FULL,” add it.</td>
+</tr>
+<tr>
+<td><strong>LOWER</strong></td>
+<td>Storage Room</td>
+<td>“Storage Sconces” (1 load)</td>
+<td>HZ2-SWEX or DIMUEX,<strong>Style 6</strong></td>
+<td><strong>TOP:</strong> STORAGE LIGHT <code>&lt;br&gt;</code><strong>BOTTOM:</strong> OFF</td>
+<td>Single load.</td>
+</tr>
+<tr>
+<td><strong>LOWER</strong></td>
+<td>Downstairs Laundry</td>
+<td>2 loads: “Sconces / Entry Cans” (wrong color)</td>
+<td>HZ2-DIMUEX,<strong>Style 2</strong></td>
+<td><strong>Line 1:</strong> FULL <code>&lt;br&gt;</code><strong>Line 2:</strong> FAN <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>Possibly unify overhead + sconces if 2 total loads. Switch color to white.</td>
+</tr>
+<tr>
+<td><strong>LOWER</strong></td>
+<td>Christmas Closet</td>
+<td>Legacy switch for ceiling (1 load)</td>
+<td>HZ2-SWEX or DIMUEX,<strong>Style 6</strong></td>
+<td><strong>TOP:</strong> CLOSET LIGHT <code>&lt;br&gt;</code><strong>BOTTOM:</strong> OFF</td>
+<td>Simple on/off or dim.</td>
+</tr>
+<tr>
+<td><strong>LOWER</strong></td>
+<td>Unused Legacy Hall</td>
+<td>Doesn’t do anything</td>
+<td>Remove or KPEX</td>
+<td>—</td>
+<td>If no circuit, remove. Could place a scene keypad.</td>
+</tr>
+<tr>
+<td><strong>LOWER</strong></td>
+<td>Large Storage</td>
+<td>“All Lights” (1 load or multiple?)</td>
+<td>HZ2-SWEX or DIMUEX,<strong>Style 6</strong></td>
+<td><strong>TOP:</strong> STORAGE LIGHTS <code>&lt;br&gt;</code><strong>BOTTOM:</strong> OFF</td>
+<td>If multiple circuits, might need style 1 with 4–5 lines.</td>
+</tr>
+<tr>
+<td><strong>LOWER</strong></td>
+<td>Guest Rm Entrance</td>
+<td>“Fan + Shade / Cans” =&gt; 2–3 loads</td>
+<td>HZ2-DIMUEX,<strong>Style 2</strong></td>
+<td><strong>Line 1:</strong> FAN <code>&lt;br&gt;</code><strong>Line 2:</strong> SHADE <code>&lt;br&gt;</code><strong>Line 3:</strong> CANS <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>2–3 loads. If 3 loads + scene, might do style 1.</td>
+</tr>
+<tr>
+<td><strong>LOWER</strong></td>
+<td>Guest Bath</td>
+<td>“Lights / Cabinet / Fan / Sconces” + separate “Shower”?</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong></td>
+<td><strong>1:</strong> FULL <code>&lt;br&gt;</code><strong>2:</strong> FAN <code>&lt;br&gt;</code><strong>3:</strong> SCONCES <code>&lt;br&gt;</code><strong>4:</strong> CABINET <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>“Shower” separate if physically another circuit.</td>
+</tr>
+<tr>
+<td><strong>LOWER</strong></td>
+<td>Guest Closet</td>
+<td>Legacy closet switch (1 load)</td>
+<td>HZ2-SWEX or DIMUEX,<strong>Style 6</strong></td>
+<td><strong>TOP:</strong> CLOSET LIGHT <code>&lt;br&gt;</code><strong>BOTTOM:</strong> OFF</td>
+<td>Straight replacement.</td>
+</tr>
+<tr>
+<td><strong>LOWER</strong></td>
+<td>Rec Rm (cove)</td>
+<td>“Cove Lights” (1 load)</td>
+<td>HZ2-DIMUEX,<strong>Style 2</strong></td>
+<td><strong>Line 1:</strong> COVE LIGHTS <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>Single load. If you want a large rocker instead, style 6.</td>
+</tr>
+<tr>
+<td><strong>LOWER</strong></td>
+<td>Rec Rm (patio)</td>
+<td>“Rec Room Patio” (1 load)</td>
+<td>HZ2-SWEX or KPEX,<strong>Style 2</strong></td>
+<td><strong>Line 1:</strong> PATIO LIGHT <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>If an outdoor shade is present, add line 2.</td>
+</tr>
+<tr>
+<td><strong>LOWER</strong></td>
+<td>Rec Rm (3-panel)</td>
+<td>“Middle Hall / Rec Rm Hall / Rec Rm Cans”</td>
+<td>HZ2-SWEX or DIMUEX,<strong>Style 1</strong></td>
+<td><strong>1:</strong> MIDDLE HALL <code>&lt;br&gt;</code><strong>2:</strong> REC HALL <code>&lt;br&gt;</code><strong>3:</strong> REC CANS <code>&lt;br&gt;</code><strong>4:</strong> FULL <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>3 loads + scene line.</td>
+</tr>
+<tr>
+<td><strong>LOWER</strong></td>
+<td>Exercise Room</td>
+<td>“Exercise Rm + Fan + Mirror + Overhead,” 3–4 loads + scene?</td>
+<td>HZ2-DIMUEX,<strong>Style 1</strong> (5 lines)</td>
+<td><strong>1:</strong> WORKOUT <code>&lt;br&gt;</code><strong>2:</strong> FAN <code>&lt;br&gt;</code><strong>3:</strong> MIRROR <code>&lt;br&gt;</code><strong>4:</strong> OVERHEAD <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>Scenes: “WORKOUT.”</td>
+</tr>
+<tr>
+<td><strong>LOWER</strong></td>
+<td>Movie Theater</td>
+<td>Various (cans, sconces, accent). Possibly 2 keypads</td>
+<td><strong>2 ×</strong> HZ2-DIMUEX, Style 1**</td>
+<td><strong>Device 1:</strong><code>&lt;br&gt;</code><strong>1:</strong> FULL <code>&lt;br&gt;</code><strong>2:</strong> MOVIE <code>&lt;br&gt;</code><strong>3:</strong> SCONCES <code>&lt;br&gt;</code><strong>4:</strong> STEPS <code>&lt;br&gt;</code><strong>5:</strong> OFF <code>&lt;br&gt;</code><strong>Device 2:</strong> ACCENT / FAN / “INTERMISSION”</td>
+<td>Scenes: “MOVIE,” “INTERMISSION.” If ≤5 loads total, unify.</td>
+</tr>
+<tr>
+<td><strong>LOWER</strong></td>
+<td>Tyler’s Room</td>
+<td>“Cans + fan + shades” =&gt; up to 3 lines + OFF</td>
+<td>HZ2-DIMUEX,<strong>Style 2</strong></td>
+<td><strong>Line 1:</strong> FAN <code>&lt;br&gt;</code><strong>Line 2:</strong> SHADES <code>&lt;br&gt;</code><strong>Line 3:</strong> CANS <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>If more lines or a scene needed, style 1.</td>
+</tr>
+<tr>
+<td><strong>LOWER</strong></td>
+<td>Tyler’s Bath</td>
+<td>4 loads: “Sconces / Fan / Cans / Closet mislabeled fan?”</td>
+<td>(1) HZ2-DIMUEX,<strong>Style 1</strong> + closet style 6</td>
+<td>Bath Keypad:<strong>1:</strong> FULL <code>&lt;br&gt;</code><strong>2:</strong> FAN <code>&lt;br&gt;</code><strong>3:</strong> SCONCES <code>&lt;br&gt;</code><strong>4:</strong> CANS <code>&lt;br&gt;</code><strong>5:</strong> OFF <code>&lt;br&gt;</code>Closet: CLOSET / OFF</td>
+<td>One “fan” is actually the closet. Rename.</td>
+</tr>
+<tr>
+<td><strong>LOWER</strong></td>
+<td>Tyler’s Cabinet</td>
+<td>“Cabinet” (LED, 1 load)</td>
+<td>HZ2-DIMUEX,<strong>Style 2</strong></td>
+<td><strong>Line 1:</strong> CABINET <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>Single load.</td>
+</tr>
+<tr>
+<td><strong>LOWER</strong></td>
+<td>East Hall / Middle</td>
+<td>“Stairs / East Hall / Middle Hall,” 3 loads + scene?</td>
+<td>HZ2-SWEX or DIMUEX,<strong>Style 1</strong></td>
+<td><strong>1:</strong> STAIRS <code>&lt;br&gt;</code><strong>2:</strong> EAST HALL <code>&lt;br&gt;</code><strong>3:</strong> MIDDLE HALL <code>&lt;br&gt;</code><strong>4:</strong> FULL <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>3 loads + scene line.</td>
+</tr>
+<tr>
+<td><strong>LOWER</strong></td>
+<td>Furnace Room</td>
+<td>“Ceiling Sconces + Rack” =&gt; 2 loads</td>
+<td>HZ2-SWEX,<strong>Style 2</strong></td>
+<td><strong>Line 1:</strong> FURNACE LIGHT <code>&lt;br&gt;</code><strong>Line 2:</strong> RACK LIGHT <code>&lt;br&gt;</code><strong>(Rocker:</strong> OFF <strong>)</strong></td>
+<td>If only 1 load, style 6.</td>
+</tr>
+<tr>
+<td><strong>OUTDOOR</strong></td>
+<td>Hearth Patio</td>
+<td>Pendants / Sconce / Cans (no local switch)</td>
+<td>None (virtual only)</td>
+<td>N/A</td>
+<td>Controlled by an indoor scene or Crestron app. Add a keypad if you want local lines.</td>
+</tr>
+<tr>
+<td><strong>OUTDOOR</strong></td>
+<td>Kitchen Nook Patio</td>
+<td>“Pendant / Lamps / Shades?” (no switch)</td>
+<td>None (virtual only)</td>
+<td>N/A</td>
+<td>Same approach. If you want local, do HZ2-SWEX or KPEX.</td>
+</tr>
+<tr>
+<td><strong>OUTDOOR</strong></td>
+<td>Main Terrace</td>
+<td>“Fireplace / Sconce / Cans / Pendants” (no switch)</td>
+<td>None (virtual only)</td>
+<td>N/A</td>
+<td>Possibly unify under an indoor “TERRACE” scene.</td>
+</tr>
+<tr>
+<td><strong>OUTDOOR</strong></td>
+<td>Lower Terrace</td>
+<td>“Cans / Sconce” (Switch-type, no device currently)</td>
+<td>None (virtual only)</td>
+<td>N/A</td>
+<td>If local needed, style 2 or 6.</td>
+</tr>
+<tr>
+<td><strong>OUTDOOR</strong></td>
+<td>Hot Tub Patio</td>
+<td>“Patio Cans / Sconces / Music?” (no local switch)</td>
+<td>None (virtual only)</td>
+<td>N/A</td>
+<td>Could add a 5-line if you want.</td>
+</tr>
+<tr>
+<td><strong>OUTDOOR</strong></td>
+<td>Lower East Powder</td>
+<td>Possibly “Ceiling / Fan / Sconce”</td>
+<td>HZ2-DIMUEX, Style 1 (5 lines)</td>
+<td><strong>1:</strong> FULL <code>&lt;br&gt;</code><strong>2:</strong> FAN <code>&lt;br&gt;</code><strong>3:</strong> SCONCE <code>&lt;br&gt;</code><strong>4:</strong> DIM <code>&lt;br&gt;</code><strong>5:</strong> OFF</td>
+<td>If physically outside or an interior powder near outdoors.</td>
+</tr>
+<tr>
+<td><strong>OUTDOOR</strong></td>
+<td>Sauna Room</td>
+<td>Switch labeled “Under Cabinet,” (ceiling sconces, 1 load)</td>
+<td>Possibly style 6</td>
+<td><strong>TOP:</strong> SAUNA LIGHT <code>&lt;br&gt;</code><strong>BOTTOM:</strong> OFF</td>
+<td>If no local keypad physically, it’s app-based.</td>
+</tr>
+<tr>
+<td><strong>OUTDOOR</strong></td>
+<td>East Hall near Sauna</td>
+<td>“East Hall” single toggle?</td>
+<td>Possibly style 2 or 6</td>
+<td>e.g.: 1) EAST HALL <code>&lt;br&gt;</code>(Rocker OFF)</td>
+<td>Might unify with a nearby indoor switch.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  </body>
+</html>
